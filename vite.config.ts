@@ -5,7 +5,8 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
 	plugins: [svelte(), tailwindcss()],
-	base: '/matrusp/', // GitHub Pages deployment path
+	// Use VITE_BASE_PATH env var, or default to '/' for local dev
+	base: process.env.VITE_BASE_PATH || '/',
 	resolve: {
 		alias: {
 			'~': '/src',
