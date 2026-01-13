@@ -100,15 +100,15 @@ function generateTrigrams(str: string, asAcronym = false): string[] {
 		const word = words[i]
 
 		// First letter marker
-		trigrams.push(word[0] + '#')
+		trigrams.push(`${word[0]}#`)
 
 		// First trigram with special marker (for first word only)
 		if (i === 0 && word.length > 2) {
-			trigrams.push(word[0] + word[1] + word[2] + '!')
+			trigrams.push(`${word[0]}${word[1]}${word[2]}!`)
 		}
 
 		// Exact word match
-		trigrams.push(word + '$')
+		trigrams.push(`${word}$`)
 
 		// Standard trigrams
 		for (let j = 0; j < word.length; j++) {
@@ -118,13 +118,13 @@ function generateTrigrams(str: string, asAcronym = false): string[] {
 
 			// Acronym handling for short words
 			if (asAcronym && word.length < 5 && j > 0) {
-				trigrams.push(word[j - 1] + word[j] + '%')
+				trigrams.push(`${word[j - 1]}${word[j]}%`)
 			}
 		}
 
 		// Sequential first letters
 		if (i > 0) {
-			trigrams.push(words[i - 1][0] + words[i][0] + '%')
+			trigrams.push(`${words[i - 1][0]}${words[i][0]}%`)
 		}
 	}
 
@@ -371,7 +371,7 @@ export async function searchLectures(
 	if (matchedCodes.size === 0) return []
 
 	// Fetch and filter lectures
-	let lecturesQuery = db.lectures.where('codigo').anyOf([...matchedCodes])
+	const lecturesQuery = db.lectures.where('codigo').anyOf([...matchedCodes])
 
 	// Apply filters
 	const lectures = await lecturesQuery.toArray()
@@ -382,7 +382,7 @@ export async function searchLectures(
 		if (options?.departamento && lecture.departamento !== options.departamento) return false
 		if (options?.periodos?.length) {
 			const hasMatchingPeriodo = lecture.periodos?.some(
-				(p) => options.periodos!.includes(p)
+				(p) => options.periodos?.includes(p)
 			)
 			if (!hasMatchingPeriodo) return false
 		}

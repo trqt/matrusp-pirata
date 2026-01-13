@@ -126,7 +126,7 @@
 		try {
 			selectedCourse = (await fetchCourse(selectedCourseCode)) ?? null
 			if (selectedCourse) {
-				periodsList = Object.keys(selectedCourse.periodos).sort((a, b) => parseInt(a) - parseInt(b))
+				periodsList = Object.keys(selectedCourse.periodos).sort((a, b) => parseInt(a, 10) - parseInt(b, 10))
 			} else {
 				periodsList = []
 			}

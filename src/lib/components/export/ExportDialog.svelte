@@ -33,7 +33,9 @@
 		const success = await copyToClipboard(shareURL)
 		if (success) {
 			copied = true
-			setTimeout(() => (copied = false), 2000)
+			setTimeout(() => {
+				copied = false
+			}, 2000)
 		}
 	}
 
@@ -51,7 +53,9 @@
 		const success = downloadICS(appState.activePlan.lectures, appState.activeCombination)
 		if (success) {
 			icsDownloaded = true
-			setTimeout(() => (icsDownloaded = false), 2000)
+			setTimeout(() => {
+				icsDownloaded = false
+			}, 2000)
 		}
 	}
 

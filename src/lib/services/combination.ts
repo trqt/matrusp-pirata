@@ -8,7 +8,7 @@
  * - Combination: Array of ClassroomGroups, one per lecture, that don't conflict
  */
 
-import type { ClassroomData, LectureData, PlanLecture, DayOfWeek } from '~/lib/models/types'
+import type { ClassroomData, PlanLecture } from '~/lib/models/types'
 import { parseTime } from '~/lib/models/types'
 
 /** Maximum number of combinations to compute (to prevent UI freeze) */

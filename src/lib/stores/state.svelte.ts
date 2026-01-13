@@ -14,11 +14,8 @@ import type {
 import { SCHEDULE_COLORS } from '~/lib/models/types'
 import {
 	computeCombinations,
-	findClosestCombination,
 	classroomsConflict,
-	type Combination,
 	type CombinationResult,
-	MAX_COMBINATIONS,
 } from '~/lib/services/combination'
 
 const STORAGE_KEY = 'matrusp-state'

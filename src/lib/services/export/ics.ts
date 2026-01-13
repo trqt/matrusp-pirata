@@ -143,7 +143,7 @@ function buildEvent(
 
 /** Generate ICS content for the current combination */
 export function generateICS(
-	lectures: PlanLecture[],
+	_lectures: PlanLecture[],
 	combination: Combination | null
 ): string | null {
 	if (!combination) return null
